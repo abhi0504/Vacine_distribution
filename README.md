@@ -1,7 +1,7 @@
 # VACCINEED...VIRTUAL QUEUE FOR COVID-19 VACCINATION
 
 
-# WHY THIS?
+**WHY THIS?**
 
 Covid vaccine distribution seems to be very difficult in the lockdown. Therefore, to prevent
 virus spread and maintain social distancing during this process, we came up with the
@@ -9,7 +9,7 @@ idea of virtual queueing for covid -19 vaccine distribution system. This will al
 keeping a check on black marketing of vaccines.
 
 
-# DESCRIPTION:
+**DESCRIPTION:**
 
 A platform where a citizen using his/her aadhar card can register and book a slot for
 COVID-19 vaccination.
@@ -37,7 +37,7 @@ and medical proofs.
 ● Can use chatbot to ask any question or query.
 
 
-# TECH STACK :
+**TECH STACK :**
 
 FRONTEND
 
@@ -60,3 +60,18 @@ BACKEND
 ● Firebase
 
 Dialogflow
+
+
+**FUTURE WORK:**
+
+I. Location wise center distribution
+   
+   According to the user's address (extracted from aadhar details) locations of various
+   vaccination centers will be given.
+
+II. Fingerprints authentication
+   
+   Fingerprints will be used to authentify the user in case someone does not have
+   aadhar card.
+
+III. Online payment for vaccine
