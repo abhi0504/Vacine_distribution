@@ -10,3 +10,4 @@ A platform where a citizen using his/her aadhar card can register and book a slo
 ● Can check his status in the queue. 
 ● Can appeal for an emergency request to get a vaccine early by giving valid reasons and medical proofs. 
 ● Can use chatbot to ask any question or query.
+(Update required)
