@@ -26,14 +26,22 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb://localhost:27017/userDB", {useNewUrlParser: true , useUnifiedTopology: true});
+mongoose.connect("mongodb://localhost:27017/vaccineuserDB", {useNewUrlParser: true , useUnifiedTopology: true});
 mongoose.set("useCreateIndex", true);
 
 const userSchema = new mongoose.Schema ({
   email: String,
   password: String,
-  googleId: String,
-  secret: String
+  name: String,
+  number: Number,
+  age: Number,
+  blood: String,
+  address: String,
+  aadhar: String,
+  emergency: Boolean,
+  reason: String,
+  disease: String,
+  link: String
 });
 
 userSchema.plugin(passportLocalMongoose);
@@ -119,25 +127,25 @@ app.get("/submit", function(req, res){
   }
 });
 
-app.post("/submit", function(req, res){
-  const submittedSecret = req.body.secret;
+// app.post("/submit", function(req, res){
+//   const submittedSecret = req.body.secret;
 
-//Once the user is authenticated and their session gets saved, their user details are saved to req.user.
-  // console.log(req.user.id);
+// //Once the user is authenticated and their session gets saved, their user details are saved to req.user.
+//   // console.log(req.user.id);
 
-  User.findById(req.user.id, function(err, foundUser){
-    if (err) {
-      console.log(err);
-    } else {
-      if (foundUser) {
-        foundUser.secret = submittedSecret;
-        foundUser.save(function(){
-          res.redirect("/secrets");
-        });
-      }
-    }
-  });
-});
+//   User.findById(req.user.id, function(err, foundUser){
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       if (foundUser) {
+//         foundUser.secret = submittedSecret;
+//         foundUser.save(function(){
+//           res.redirect("/secrets");
+//         });
+//       }
+//     }
+//   });
+// });
 
 app.get("/logout", function(req, res){
   req.logout();
@@ -146,16 +154,36 @@ app.get("/logout", function(req, res){
 
 app.post("/register", function(req, res){
 
-  User.register({username: req.body.username}, req.body.password, function(err, user){
-    if (err) {
-      console.log(err);
-      res.redirect("/register");
-    } else {
-      passport.authenticate("local")(req, res, function(){
-        res.redirect("/secrets");
-      });
-    }
-  });
+  // User.register({username: req.body.username}, req.body.password, function(err, user){
+  //   if (err) {
+  //     console.log(err);
+  //     res.redirect("/register");
+  //   } else {
+  //     passport.authenticate("local")(req, res, function(){
+  //       res.redirect("/secrets");
+  //     });
+  //   }
+  // });
+
+  console.log(req);
+
+  const user = new User({
+    email: req.body.email,
+    password: req.body.Password,
+    name: req.body.name,
+    number: req.body.Contact,
+    age: req.body.Age,
+    blood: req.body.blood_grp,
+    address: req.body.address,
+    aadhar: req.body.Adhaar_no,
+    emergency: req.body.emergency,
+    reason: req.body.reason,
+    disease: req.body.disease,
+    link: req.body.Signature
+  })
+  
+  user.save();
+
 
 });
 
